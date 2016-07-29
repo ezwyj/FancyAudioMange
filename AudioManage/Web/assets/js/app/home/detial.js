@@ -17,7 +17,17 @@
     //////////////////////
     //事件绑定
     //////////////////////
+    $('#buildQrCode').on('click', function () {
+        $.post(rootUrl + 'Home/BuildQrCode', { audioId:  }, function (res) {
+            if (res.state) {
 
+
+                $.tips(res.msg, 3);
+            } else {
+                $.tips(res.msg, 0);
+            }
+        });
+    });
 
     $('#cancel').on('click', function () {
         window.close();
@@ -36,7 +46,7 @@
             Order: $("#Order").val(),
             State:$("#State").val()
         }
-        debugger;
+
         $.post(rootUrl + 'Home/detial', { valueSetJson: JSON.stringify(audioEntity) }, function (res) {
             if (res.state) {
                 
