@@ -1,0 +1,108 @@
+﻿@model AudioCore.Entity.AudioEntity
+@{
+    ViewBag.Title = "详情";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string currNode = (string)ViewBag.currNode;
+
+    string badge = HttpContext.Current.User.Identity.Name;
+}
+
+
+@section styles {
+    <link rel="stylesheet" href="@Url.Content("~/assets/plugins/datepicker/bootstrap-datepicker.min.css")" />
+}
+
+<div class="container page-body">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h5>
+                语音播放文件
+            </h5>
+        </div>
+        <div class="panel-body">
+            <div class="row item-row">
+                <div class="col-md-12">
+                    <div class="item-name">标题：</div>
+                    <div class="item-static"><input type="text" value="@Model.Title" id="title"/></div>
+                </div>
+        
+            </div>
+            <div class="row item-row">
+                <div class="col-md-12">
+                    <div class="item-name">位置：</div>
+                    <div class="item-static"><input type="text" value="@Model.Location" id="location"/></div>
+                </div>
+                
+            </div>
+            <div class="row item-row">
+                <div class="col-md-12">
+                    <div class="item-name">内容：</div>
+                    <div class="item-static"><textarea id="content" cols="30" rows="10">@Model.Content </textarea> </div>
+                </div>
+
+            </div>
+            <div class="row item-row" style="height:50px">
+                <div class="col-md-4">
+                    <div class="item-name">建立时间：</div>
+                    <div class="item-static"><input type="text" value="@Model.CreateTimeExp" class="form-control datepicker"  readonly id="createTime" /> </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="item-name">状态：</div>
+                    <div class="item-static">@Model.State</div>
+                </div>
+                
+            </div>
+            <div class="row item-row">
+                <div class="col-md-4">
+                    <div class="item-name">二维码：</div>
+                    <div class="item-control">
+                        
+                            <img src="@Model.QrCodeFile" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row item-row">
+                <div class="col-md-12">
+                    <div class="item-name">音乐文件：</div>
+                    <div class="item-static">
+                        <div class="item-control">
+                            <button class="btn btn-sm btn-primary" id="select-attachment">　附件　</button>
+                        </div>
+                        <div class="item-control uploadify-queue">
+                            @if(Model.AudioFile!="")
+                            {
+                                <div class="finish-queue-item">
+
+                                    <span class="file-name" title="@Model.AudioFile">@Model.AudioFile</span>
+                                    <a class="file-operate" href="@Url.Content("~/Common/DownloadAttachment?id=" + Model.AudioFileId)">下载</a>
+                                    
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-row">
+                <div class="col-md-12">
+                    <div class="panel-option">
+                        @if (Model.Id==0)  {<button class="btn btn-sm btn-primary" id="buildQrCode">生成二维码</button>}
+                        <button class="btn btn-sm btn-primary" id="save">保存</button>
+                        <button class="btn btn-sm btn-primary" id="cancel">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+</div>
+
+@section scripts {
+    <script>
+        OP_CONFIG.module = 'home';
+        OP_CONFIG.page = 'Detial';
+    </script>
+}
+
