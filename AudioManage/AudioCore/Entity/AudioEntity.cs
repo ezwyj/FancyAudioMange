@@ -19,7 +19,6 @@ namespace AudioCore.Entity
         public int Order { get; set; }
 
         public string AudioFile { get; set; }
-        public int AudioFileId { get; set; }
         public string QrCodeFile { get; set; }
 
         public string Remark { get; set; }
@@ -58,5 +57,7 @@ namespace AudioCore.Entity
                 return ret;
             }
         }
+
+        public string AudioFileId { get; set; }
     }
 }

@@ -15,7 +15,7 @@
             return {
                 pageIndex: 0,
                 pageSize: 20,
-                keyword: $.trim($('#title').val())
+                title: $.trim($('#title').val())
                 
             };
         },
@@ -29,7 +29,7 @@
             name: '标题',
             field: 'Title',
             handler: function (value, data) {
-                return '<a href="' + rootUrl + 'Home/Detail?Id=' + data.Id + '" title=' + data.Title + '" target="_blank">' + data.TitleMini + '</a>';
+                return '<a href="' + rootUrl + 'Home/detial?Id=' + data.Id + '" title=' + data.Title + '" target="_blank">' + data.Title + '</a>';
 
             }
         }, {
@@ -43,6 +43,10 @@
         }, {
             name: '提交日期',
             field: 'CreateTimeExp',
+            width: 130
+        }, {
+            name: '排序',
+            field: 'Order',
             width: 130
         }, {
             name: '备注',
@@ -61,7 +65,7 @@
     });
 
     $('#add').on('click', function () {
-        window.open('/home/Detial?id=0', 'newwindow', 'height=800x, width=600px, scrollbarsno, resizable=no')
+        window.open('home/detial?id=0', 'newwindow', 'height=800x, width=600px, scrollbarsno, resizable=no')
     });
 
     

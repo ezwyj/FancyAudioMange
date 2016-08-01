@@ -1,0 +1,28 @@
+﻿@model AudioCore.Entity.AudioEntity
+@{
+    ViewBag.Title = "手机播放";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    <link href="@Url.Content("~/assets/css/weui/weui.min.css")" rel="stylesheet" />
+}
+
+<article class="weui_article">
+    <h1>@Model.Title</h1>
+    <section>
+        <h2 class="title">说明</h2>
+        <section>
+            
+            <p>
+                @Model.Content
+            </p>
+        </section>
+        <h2>音乐</h2>
+        <section>
+            <p>
+                
+            </p>
+        </section>
+    </section>
+</article>

@@ -13,6 +13,7 @@ if (typeof OP_CONFIG != 'undefined' && OP_CONFIG.module && OP_CONFIG.page) {
             'selector': OP_CONFIG.rootUrl + 'assets/plugins/selector/selector',
             'template': OP_CONFIG.rootUrl + 'assets/plugins/art-template',
             'echarts': OP_CONFIG.rootUrl + 'assets/plugins/echarts/echarts-all',
+            'wysiwyg': 'lib/bootstrap-wysiwyg'
         },
         shim: {
             'bootstrap': {
@@ -37,6 +38,9 @@ if (typeof OP_CONFIG != 'undefined' && OP_CONFIG.module && OP_CONFIG.page) {
                 deps: ['jquery', 'tlayer']
             },
             'echarts': {
+                deps:['jquery']
+            },
+            'wysiwyg': {
                 deps:['jquery']
             }
         },

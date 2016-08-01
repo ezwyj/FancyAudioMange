@@ -21,23 +21,30 @@
         </div>
         <div class="panel-body">
             <div class="row item-row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="item-name">标题：</div>
                     <div class="item-static"><input type="text" value="@Model.Title" id="title"/></div>
                 </div>
-        
-            </div>
-            <div class="row item-row">
-                <div class="col-md-12">
-                    <div class="item-name">位置：</div>
-                    <div class="item-static"><input type="text" value="@Model.Location" id="location"/></div>
+                <div class="row item-row">
+                    <div class="col-md-4">
+                        <div class="item-name">位置：</div>
+                        <div class="item-static"><input type="text" value="@Model.Location" id="location" /></div>
+                    </div>
+
                 </div>
-                
+                <div class="row item-row">
+                    <div class="col-md-4">
+                        <div class="item-name">排序：</div>
+                        <div class="item-static"><input type="text" value="@Model.Order" id="order" /></div>
+                    </div>
+
+                </div>
             </div>
+            
             <div class="row item-row">
-                <div class="col-md-12">
+                <div class="col-md-12" `>
                     <div class="item-name">内容：</div>
-                    <div class="item-static"><textarea id="content" cols="30" rows="10">@Model.Content </textarea> </div>
+                    <div id="editor" style="{overflow:scroll; max-height:300px}" >@Model.Content  </div>
                 </div>
 
             </div>
@@ -57,7 +64,7 @@
                     <div class="item-name">二维码：</div>
                     <div class="item-control">
                         
-                            <img src="@Model.QrCodeFile" width="180" height="180" />
+                            <img src="~/upload/@Model.QrCodeFile" width="180" height="180" />
                     </div>
                 </div>
             </div>
@@ -70,9 +77,9 @@
                             <button class="btn btn-sm btn-primary" id="select-attachment">　附件　</button>
                         </div>
                         <div class="item-control uploadify-queue">
-                            @if(Model.AudioFile!="")
+                            @if(Model.Id!=0)
                             {
-                                <div class="finish-queue-item">
+                                <div id="" class="finish-queue-item">
 
                                     <span class="file-name" title="@Model.AudioFile">@Model.AudioFile</span>
                                     <a class="file-operate" href="@Url.Content("~/Common/DownloadAttachment?id=" + Model.AudioFileId)">下载</a>

@@ -31,22 +31,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DogNet.Repositories">
-      <HintPath>..\POV_WEIXIN\Web\REF\DogNet.Repositories.dll</HintPath>
+      <HintPath>..\REF\DogNet.Repositories.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PetaPoco">
-      <HintPath>..\POV_WEIXIN\Web\REF\PetaPoco.dll</HintPath>
+      <HintPath>..\REF\PetaPoco.dll</HintPath>
     </Reference>
-    <Reference Include="Senparc.Weixin">
-      <HintPath>..\Web\REF\Senparc.Weixin.dll</HintPath>
-    </Reference>
-    <Reference Include="Senparc.Weixin.MP">
-      <HintPath>..\Web\REF\Senparc.Weixin.MP.dll</HintPath>
-    </Reference>
-    <Reference Include="Senparc.Weixin.MP.MvcExtension">
-      <HintPath>..\Web\REF\Senparc.Weixin.MP.MvcExtension.dll</HintPath>
-    </Reference>
-    <Reference Include="Senparc.Weixin.Open">
-      <HintPath>..\Web\REF\Senparc.Weixin.Open.dll</HintPath>
+    <Reference Include="Senparc.Weixin.MP.MvcExtension.4.0.1.32581.Fakes">
+      <HintPath>FakesAssemblies\Senparc.Weixin.MP.MvcExtension.4.0.1.32581.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -72,6 +64,9 @@
       <Project>{02e6b284-eb4e-4815-8069-ec37e65938a3}</Project>
       <Name>Log</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Fakes\Senparc.Weixin.MP.MvcExtension.fakes" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

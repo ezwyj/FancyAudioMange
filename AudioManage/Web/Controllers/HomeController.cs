@@ -1,8 +1,7 @@
 ﻿using AudioCore.Entity;
 using AudioCore.Service;
+using Common.Util;
 using PetaPoco;
-using Senparc.Weixin.MP.AdvancedAPIs;
-using Senparc.Weixin.MP.AdvancedAPIs.QrCode;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +10,9 @@ using System.Net;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using Senparc.Weixin.MP.AdvancedAPIs.QrCode;
+using Senparc.Weixin.MP.AdvancedAPIs;
+
 
 namespace Web.Controllers
 {
@@ -33,18 +35,63 @@ namespace Web.Controllers
 
             return View();
         }
+        private static string GetPictureQrCode(string QrCodeURL, string savePath)
+        {
+            try
+            {
+                WebRequest request = WebRequest.Create(QrCodeURL);
+                WebResponse response = request.GetResponse();
+                Stream reader = response.GetResponseStream();
+
+                FileStream writer = new FileStream(savePath, FileMode.OpenOrCreate, FileAccess.Write);
+                byte[] buff = new byte[512];
+                int c = 0; //实际读取的字节数
+                while ((c = reader.Read(buff, 0, buff.Length)) > 0)
+                {
+                    writer.Write(buff, 0, c);
+                }
+                writer.Close();
+                writer.Dispose();
+
+                reader.Close();
+                reader.Dispose();
+                response.Close();
+                return savePath;
+            }
+            catch
+            {
+                return "error";
+            }
+        }
+        public static string BuildQrCode(int audioId, string savefile)
+        {
+             CreateQrCodeResult qrResult = Senparc.Weixin.MP.AdvancedAPIs.QrCodeApi.CreateByStr(appId, "http://pov.deviceiot.top/Mobile?id="+audioId.ToString());
+            string QrCodeURL = QrCodeApi.GetShowQrCodeUrl(qrResult.ticket);
+            string localUrl = GetPictureQrCode(QrCodeURL, savefile);
+            return localUrl;
+        } 
+
+
+
         [HttpPost]
         public JsonResult Detial(string valueSetJson)
         {
 
             bool state = true;
             string msg = string.Empty;
-
-            AudioEntity entity = AudioService.SaveAudion(valueSetJson, out state, out msg);
-            if (string.IsNullOrEmpty(msg)) msg = "增加成功";
+            var postEntity = Serializer.ToObject<AudioCore.Entity.AudioEntity>(valueSetJson);
+            
+            AudioEntity entity = AudioService.SaveAudion(postEntity, out state, out msg);
+            if (state && postEntity.Id == 0)
+            {
+                string path = System.Web.HttpContext.Current.Server.MapPath("~\\Upload");
+                BuildQrCode(entity.Id, path+"\\"+entity.QrCodeFile);
+            }
+            if (string.IsNullOrEmpty(msg)) msg = "保存成功";
             
             return new JsonResult { Data = new { state = state, msg = msg, data = entity } };
         }
+        
 
         public ActionResult Detial(int id)
         {

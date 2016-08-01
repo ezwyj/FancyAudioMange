@@ -69,16 +69,16 @@
       <HintPath>REF\PetaPoco.dll</HintPath>
     </Reference>
     <Reference Include="Senparc.Weixin">
-      <HintPath>REF\Senparc.Weixin.dll</HintPath>
+      <HintPath>..\REF\Senparc.Weixin.dll</HintPath>
     </Reference>
     <Reference Include="Senparc.Weixin.MP">
-      <HintPath>REF\Senparc.Weixin.MP.dll</HintPath>
+      <HintPath>..\REF\Senparc.Weixin.MP.dll</HintPath>
     </Reference>
     <Reference Include="Senparc.Weixin.MP.MvcExtension">
-      <HintPath>REF\Senparc.Weixin.MP.MvcExtension.dll</HintPath>
+      <HintPath>..\REF\Senparc.Weixin.MP.MvcExtension.dll</HintPath>
     </Reference>
     <Reference Include="Senparc.Weixin.Open">
-      <HintPath>REF\Senparc.Weixin.Open.dll</HintPath>
+      <HintPath>..\REF\Senparc.Weixin.Open.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -155,10 +155,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\CustomMessageContext.cs" />
+    <Compile Include="Controllers\CustomMessageHandler.cs" />
+    <Compile Include="Controllers\CustomMessageHandler_Events.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MobileController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
     <Compile Include="Controllers\Units.cs" />
+    <Compile Include="Controllers\WeixinController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,6 +175,8 @@
     <Content Include="assets\css\plugins.css" />
     <Content Include="assets\css\site.css" />
     <Content Include="assets\css\tlayer.css" />
+    <Content Include="assets\css\weui\weui.css" />
+    <Content Include="assets\css\weui\weui.min.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\img\album-arrow.png" />
     <Content Include="assets\img\arrows.png" />
@@ -219,7 +225,40 @@
     <Content Include="assets\js\data\approveList.js" />
     <Content Include="assets\js\data\defectList.js" />
     <Content Include="assets\js\data\rightList.js" />
+    <Content Include="assets\js\lib\bootstrap-wysiwyg.js" />
     <Content Include="assets\js\lib\bootstrap.min.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-apollo.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-basic.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-clj.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-css.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-dart.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-erlang.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-go.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-hs.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-lisp.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-llvm.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-lua.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-matlab.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-ml.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-mumps.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-n.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-pascal.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-proto.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-r.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-rd.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-scala.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-sql.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-tcl.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-tex.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-vb.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-vhdl.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-wiki.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-xq.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\lang-yaml.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\prettify.css" />
+    <Content Include="assets\js\lib\external\google-code-prettify\prettify.js" />
+    <Content Include="assets\js\lib\external\google-code-prettify\run_prettify.js" />
+    <Content Include="assets\js\lib\external\jquery.hotkeys.js" />
     <Content Include="assets\js\lib\html5shiv.min.js" />
     <Content Include="assets\js\lib\jquery-1.11.3.min.js" />
     <Content Include="assets\js\lib\jquery.plugins.js" />
@@ -357,6 +396,7 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\pov_public.pubxml" />
     <Content Include="Views\Home\Detial.cshtml" />
+    <Content Include="Views\Mobile\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

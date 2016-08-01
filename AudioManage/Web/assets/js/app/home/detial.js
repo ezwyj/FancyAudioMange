@@ -1,4 +1,4 @@
-﻿define(['common', 'util', 'template', 'uploadify', 'ztree', 'plugins', 'datepicker', 'bootstrap'], function ($, util, template) {
+﻿define(['common', 'util', 'template', 'wysiwyg','uploadify', 'ztree', 'plugins', 'datepicker', 'bootstrap', ], function ($, util, template) {
     var rootUrl = OP_CONFIG.rootUrl;
 
 
@@ -14,11 +14,15 @@
         language: 'zh-CN'
     });
 
+    //$('#editor').wysiwyg();
+
     //////////////////////
     //事件绑定
     //////////////////////
     $('#buildQrCode').on('click', function () {
-        $.post(rootUrl + 'Home/BuildQrCode', { audioId:  }, function (res) {
+        $.post(rootUrl + 'Home/BuildQrCode', {
+            audioId: $('#AudioId').val()
+        }, function (res) {
             if (res.state) {
 
 
@@ -34,6 +38,15 @@
     });
 
     $('#save').on('click', function () {
+        var panel = $('.panel-body');
+        var attachments = [];
+
+        panel.find('.finish-queue-item').each(function () {
+            if ($(this).data('filepath')) {
+                attachments.push($(this).data('filepath'));
+            }
+        });
+
         var audioEntity = {
             Id: $("#id").val(),
             Title: $("#title").val(),
@@ -41,7 +54,7 @@
             Location: $("#location").val(),
             Remark: $("#Remark").val(),
             AudioFile: $("#AudioFile").val(),
-            AudioFileId: $("#AudioFileId").val(),
+            AudioFileId: attachments.join(),
             CreateTime: $("#CreateTime").val(),
             Order: $("#Order").val(),
             State:$("#State").val()
@@ -49,8 +62,7 @@
 
         $.post(rootUrl + 'Home/detial', { valueSetJson: JSON.stringify(audioEntity) }, function (res) {
             if (res.state) {
-                
-                
+
                 $.tips(res.msg, 3);
             } else {
                 $.tips(res.msg, 0);
@@ -63,10 +75,10 @@
         uploader: rootUrl + 'Common/UploadAttachment',
         fileSizeLimit: '100 MB',
         onSelect: function (file) {
-            if (file.type != '.mp3' ) {
-                $.tips('限制类文件，请重新上传！', 0);
-                return false;
-            }
+            //if (file.type != '.mp3' ) {
+            //    $.tips('限制类文件，请重新上传！', 0);
+            //    return false;
+            //}
 
             var queue = $('#' + this.settings.queueID);
             var html = '<div id="#{fileId}" class="uploadify-queue-item">' +
