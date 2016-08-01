@@ -204,6 +204,7 @@
     <Content Include="assets\img\loading_16.gif" />
     <Content Include="assets\img\loading_32.gif" />
     <Content Include="assets\img\locked.png" />
+    <Content Include="assets\img\mobileGB.png" />
     <Content Include="assets\img\newest.gif" />
     <Content Include="assets\img\preview.png" />
     <Content Include="assets\img\question.png" />
@@ -215,6 +216,7 @@
     <Content Include="assets\img\user.png" />
     <Content Include="assets\js\app\home\index.js" />
     <Content Include="assets\js\app\home\detial.js" />
+    <Content Include="assets\js\app\Mobile\index.js" />
     <Content Include="assets\js\app\npi\approveList.js" />
     <Content Include="assets\js\app\npi\detail.js" />
     <Content Include="assets\js\app\npi\index.js" />
@@ -356,7 +358,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\js\app\Mobile\" />
     <Folder Include="Models\" />
     <Folder Include="Upload\" />
     <Folder Include="Views\Common\" />
@@ -397,6 +398,7 @@
     <None Include="Properties\PublishProfiles\pov_public.pubxml" />
     <Content Include="Views\Home\Detial.cshtml" />
     <Content Include="Views\Mobile\Index.cshtml" />
+    <Content Include="Views\Shared\_MobileLayout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Senparc.Weixin.MP.Entities;
 using Senparc.Weixin.MP.AdvancedAPIs.QrCode;
 using Senparc.Weixin.MP;
 using Senparc.Weixin.MP.CommonAPIs;
 using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
 using Senparc.Weixin.MP.AdvancedAPIs;
 using System.Configuration;
+using Senparc.Weixin.MP.Entities;
 
 namespace Web.Controllers
 {
@@ -75,7 +75,7 @@ namespace Web.Controllers
             try
             {
                     //扫描后发送语音文件+图文链接
-
+               
 
 
             }
@@ -109,7 +109,7 @@ namespace Web.Controllers
         /// <returns></returns>
         public override IResponseMessageBase OnEvent_SubscribeRequest(RequestMessageEvent_Subscribe requestMessage)
         {
-            var responseMessage = CreateResponseMessage<ResponseMessageText>();
+            var responseMessage = CreateResponseMessage<ResponseMessageNews>();
             //通过订阅关注
             try
             {
@@ -120,8 +120,32 @@ namespace Web.Controllers
                 if (!string.IsNullOrEmpty(requestMessage.EventKey))
                 {
                     string url = requestMessage.EventKey.Replace("qrscene_", "");
+                    CreateResponseMessage<ResponseMessageNews>();
 
+                    string id = url.Replace("http://pov.deviceiot.top/Mobile/index?id=", "");
+                    var item = AudioCore.Entity.AudioEntity.GetSingle(id);
+                    if (item != null)
+                    {
+                        responseMessage.Articles.Add(new Article()
+                        {
+                            Title = item.Title,
+                            Description = item.ContentMini,
+                            Url = url
+                        });
+                        
+                    }
+                    else
+                    {
+                        responseMessage.Articles.Add(new Article()
+                        {
+                            Title = "未找到文件",
+                            Description = url,
+                            Url = url
+                        });
+                        
+                    }
 
+                    return responseMessage;
                 }
                 else
                 {
@@ -132,7 +156,13 @@ namespace Web.Controllers
             }
             catch (Exception e)
             {
-                responseMessage.Content = e.Message;
+                responseMessage.Articles.Add(new Article()
+                    {
+                        Title = e.Message,
+                        Description = ""
+
+                    }
+                );
             }
             return responseMessage;
         }

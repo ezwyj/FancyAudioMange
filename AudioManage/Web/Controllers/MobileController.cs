@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AudioCore.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,10 +12,18 @@ namespace Web.Controllers
         //
         // GET: /Mobile/
 
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
-            return View();
+            if (id != null)
+            {
+                return View(AudioEntity.GetSingle(id));
+            }
+            else
+            {
+                return View(AudioEntity.GetSingle(5));
+            }
+            
+            
         }
-
     }
 }

@@ -18,6 +18,7 @@
             <h5>
                 语音播放文件
             </h5>
+            <input id="audioId" type="hidden" value="@Model.Id" />
         </div>
         <div class="panel-body">
             <div class="row item-row">
@@ -59,11 +60,19 @@
                 </div>
                 
             </div>
+            <div class="row item-row" style="height:50px">
+                <div class="col-md-12">
+                    <div class="item-name">备注：</div>
+                    <div class="item-static"><textarea id="Remark">@Model.Remark</textarea> </div>
+                </div>
+
+
+            </div>
             <div class="row item-row">
                 <div class="col-md-4">
                     <div class="item-name">二维码：</div>
                     <div class="item-control">
-                        
+                            <input type="hidden" value="@Model.QrCodeFile" id="QrcodeFile" />
                             <img src="~/upload/@Model.QrCodeFile" width="180" height="180" />
                     </div>
                 </div>
@@ -77,12 +86,15 @@
                             <button class="btn btn-sm btn-primary" id="select-attachment">　附件　</button>
                         </div>
                         <div class="item-control uploadify-queue">
-                            @if(Model.Id!=0)
+                            @if(Model.AudioFile!=null)
                             {
                                 <div id="" class="finish-queue-item">
+                                    @foreach (var item in Model.AudioFile)
+                                    {
+                                        <span class="file-name" title="@item.FileName">@item.FileName</span>
+                                        <a class="file-operate" href="@Url.Content("~/Common/DownloadAttachment?id=" + @item.Id)">下载</a><br>
+                                    }
 
-                                    <span class="file-name" title="@Model.AudioFile">@Model.AudioFile</span>
-                                    <a class="file-operate" href="@Url.Content("~/Common/DownloadAttachment?id=" + Model.AudioFileId)">下载</a>
                                     
                                 </div>
                             }

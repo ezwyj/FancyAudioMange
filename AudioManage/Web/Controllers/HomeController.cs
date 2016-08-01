@@ -63,15 +63,37 @@ namespace Web.Controllers
                 return "error";
             }
         }
+
+        [HttpPost]
+        public JsonResult SubmitQrcode(int audioId, string savefile)
+        {
+            bool state = true;
+            string msg = string.Empty;
+
+            try
+            {
+                string path = System.Web.HttpContext.Current.Server.MapPath("~\\Upload");
+                string url = BuildQrCode(audioId, path+"\\"+savefile);
+                return new JsonResult { Data = new { state = true, msg = url } };
+               
+
+            }
+            catch (Exception e)
+            {
+                state = false;
+                msg = e.Message;
+            }
+
+            return new JsonResult { Data = new { state = state, msg = msg } };
+        }
         public static string BuildQrCode(int audioId, string savefile)
         {
-             CreateQrCodeResult qrResult = Senparc.Weixin.MP.AdvancedAPIs.QrCodeApi.CreateByStr(appId, "http://pov.deviceiot.top/Mobile?id="+audioId.ToString());
+             CreateQrCodeResult qrResult = Senparc.Weixin.MP.AdvancedAPIs.QrCodeApi.CreateByStr(appId, "http://pov.deviceiot.top/Mobile/index?id="+audioId.ToString());
             string QrCodeURL = QrCodeApi.GetShowQrCodeUrl(qrResult.ticket);
-            string localUrl = GetPictureQrCode(QrCodeURL, savefile);
+            string localUrl = GetPictureQrCode(QrCodeURL,savefile);
             return localUrl;
-        } 
-
-
+        }
+       
 
         [HttpPost]
         public JsonResult Detial(string valueSetJson)
@@ -80,9 +102,10 @@ namespace Web.Controllers
             bool state = true;
             string msg = string.Empty;
             var postEntity = Serializer.ToObject<AudioCore.Entity.AudioEntity>(valueSetJson);
-            
-            AudioEntity entity = AudioService.SaveAudion(postEntity, out state, out msg);
-            if (state && postEntity.Id == 0)
+            int oldId = postEntity.Id;
+
+            AudioEntity entity = AudioService.SaveAudio(postEntity, out state, out msg);
+            if (state && oldId == 0)
             {
                 string path = System.Web.HttpContext.Current.Server.MapPath("~\\Upload");
                 BuildQrCode(entity.Id, path+"\\"+entity.QrCodeFile);

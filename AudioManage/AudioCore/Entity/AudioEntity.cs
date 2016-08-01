@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using PetaPoco;
 using DogNet.Repositories;
+using Common.Entity;
 
 namespace AudioCore.Entity
 {
@@ -18,7 +19,7 @@ namespace AudioCore.Entity
 
         public int Order { get; set; }
 
-        public string AudioFile { get; set; }
+
         public string QrCodeFile { get; set; }
 
         public string Remark { get; set; }
@@ -27,7 +28,20 @@ namespace AudioCore.Entity
 
         public string Content { get; set; }
         [PetaPoco.Ignore]
-        public string ContentMini { get { return Content.Length > 20 ? Content.Substring(0, 20) + "..." : Content; } }
+        public string ContentMini { 
+            get 
+            { 
+                if (Content!=null)
+                {
+                    return Content.Length > 40 ? Content.Substring(0, 40) + "..." : Content; 
+                }
+                else
+                {
+                    return "";
+                }
+            
+            } 
+        }
 
         public DateTime CreateTime { get; set; }
 
@@ -59,5 +73,25 @@ namespace AudioCore.Entity
         }
 
         public string AudioFileId { get; set; }
+
+        [PetaPoco.Ignore]
+        public List<AttachmentEntity> AudioFile
+        {
+            get
+            {
+                List<AttachmentEntity> ret = new List<AttachmentEntity>();
+                if (AudioFileId != "")
+                {
+                    Sql sql = new Sql();
+                    sql.Append("Select * from attachment where id in (");
+                    sql.Append(AudioFileId);
+                    sql.Append(")");
+                    return AttachmentEntity.DefaultDB.Fetch<AttachmentEntity>(sql);
+                   
+                }
+
+                return null;
+            }
+        }
     }
 }

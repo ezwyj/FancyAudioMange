@@ -1,13 +1,15 @@
 ﻿@model AudioCore.Entity.AudioEntity
 @{
     ViewBag.Title = "手机播放";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
 }
 
 @section styles {
     <link href="@Url.Content("~/assets/css/weui/weui.min.css")" rel="stylesheet" />
 }
 
+
+<audio id="bgmusic" src="http://www.w3school.com.cn/i/song.mp3" autoplay preload loop controls></audio>
 <article class="weui_article">
     <h1>@Model.Title</h1>
     <section>
@@ -26,3 +28,12 @@
         </section>
     </section>
 </article>
+
+@section scripts {
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        OP_CONFIG.module = 'mobile';
+        OP_CONFIG.page = 'index';
+    </script>
+}
+

@@ -18,7 +18,7 @@ namespace AudioCore.Service
 
         private static string appId = WebConfigurationManager.AppSettings["WeixinAppId"];
         private static string appSecret = WebConfigurationManager.AppSettings["WeixinAppSecret"];
-        public static Entity.AudioEntity SaveAudion(AudioEntity entity, out bool state, out string msg)
+        public static Entity.AudioEntity SaveAudio(AudioEntity entity, out bool state, out string msg)
         {
             state = false;
             msg = string.Empty;

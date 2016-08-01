@@ -20,13 +20,11 @@
     //事件绑定
     //////////////////////
     $('#buildQrCode').on('click', function () {
-        $.post(rootUrl + 'Home/BuildQrCode', {
-            audioId: $('#AudioId').val()
-        }, function (res) {
+        $.post(rootUrl + 'Home/SubmitQrcode', { audioId: $("#audioId").val(), savefile: $("#QrcodeFile").val() }, function (res) {
             if (res.state) {
 
-
-                $.tips(res.msg, 3);
+                $.tips('生成功能', 3);
+                window.location.reload();
             } else {
                 $.tips(res.msg, 0);
             }
@@ -40,22 +38,23 @@
     $('#save').on('click', function () {
         var panel = $('.panel-body');
         var attachments = [];
+        var attachmentNames = [];
 
         panel.find('.finish-queue-item').each(function () {
-            if ($(this).data('filepath')) {
-                attachments.push($(this).data('filepath'));
+            if ($(this).data('fileid')) {
+                attachments.push($(this).data('fileid'));
             }
         });
 
         var audioEntity = {
-            Id: $("#id").val(),
+            Id: $("#audioId").val(),
             Title: $("#title").val(),
-            Content: $("#content").val(),
+            Content: $("#editor").val(),
             Location: $("#location").val(),
             Remark: $("#Remark").val(),
             AudioFile: $("#AudioFile").val(),
             AudioFileId: attachments.join(),
-            CreateTime: $("#CreateTime").val(),
+            CreateTime: $("#createTime").val(),
             Order: $("#Order").val(),
             State:$("#State").val()
         }
