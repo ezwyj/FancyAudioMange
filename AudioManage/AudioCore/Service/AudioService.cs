@@ -48,9 +48,15 @@ namespace AudioCore.Service
             return entity;
         }
 
-        
 
-        
+
+
+
+        public static bool Delete(int audioId,out string msg)
+        {
+            var deleteEntity = AudioEntity.GetSingle(audioId);
+            return deleteEntity.Delete(out msg); 
+        }
     }
 
 }

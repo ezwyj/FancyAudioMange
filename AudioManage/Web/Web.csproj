@@ -103,10 +103,6 @@
       <Private>True</Private>
       <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -205,6 +201,16 @@
     <Content Include="assets\img\loading_32.gif" />
     <Content Include="assets\img\locked.png" />
     <Content Include="assets\img\mobileGB.png" />
+    <Content Include="assets\img\mobileImage\1.png" />
+    <Content Include="assets\img\mobileImage\2.png" />
+    <Content Include="assets\img\mobileImage\3.png" />
+    <Content Include="assets\img\mobileImage\bg.png" />
+    <Content Include="assets\img\mobileImage\screenboard.png" />
+    <Content Include="assets\img\mobileImage\加载条灰底-1.png" />
+    <Content Include="assets\img\mobileImage\加载条球球.png" />
+    <Content Include="assets\img\mobileImage\加载条绿色.png" />
+    <Content Include="assets\img\mobileImage\加载调黑底.png" />
+    <Content Include="assets\img\mobileImage\屏幕.png" />
     <Content Include="assets\img\newest.gif" />
     <Content Include="assets\img\preview.png" />
     <Content Include="assets\img\question.png" />
@@ -266,7 +272,6 @@
     <Content Include="assets\js\lib\jquery.plugins.js" />
     <Content Include="assets\js\lib\jquery.tlayer.js" />
     <Content Include="assets\js\lib\jquery.uploadify.js" />
-    <Content Include="assets\js\lib\mqtt.js" />
     <Content Include="assets\js\lib\require.js" />
     <Content Include="assets\js\lib\require.min.js" />
     <Content Include="assets\js\lib\respond.min.js" />
@@ -395,10 +400,11 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\pov_public.pubxml" />
+    <None Include="Properties\PublishProfiles\aliyun.pubxml" />
     <Content Include="Views\Home\Detial.cshtml" />
     <Content Include="Views\Mobile\Index.cshtml" />
     <Content Include="Views\Shared\_MobileLayout.cshtml" />
+    <None Include="Properties\PublishProfiles\fancyAudioManage.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

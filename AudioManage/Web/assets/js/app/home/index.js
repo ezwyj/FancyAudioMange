@@ -29,17 +29,13 @@
             name: '标题',
             field: 'Title',
             handler: function (value, data) {
-                return '<a href="' + rootUrl + 'Home/detial?Id=' + data.Id + '" title=' + data.Title + '" target="_blank">' + data.Title + '</a>';
+                return '<a href="' + rootUrl + 'Home/detial?id=0' + data.Id + '" title=' + data.Title + '" target="_blank">' + data.Title + '</a>';
 
             }
         }, {
             name: '位置',
             field: 'Location',
-            width: 80
-        }, {
-            name: '状态',
-            field: 'StateExp',
-            width: 80
+            width: 160
         }, {
             name: '提交日期',
             field: 'CreateTimeExp',
@@ -65,7 +61,7 @@
     });
 
     $('#add').on('click', function () {
-        window.open('home/detial?id=0', 'newwindow', 'height=800x, width=600px, scrollbarsno, resizable=no')
+        window.open(rootUrl + 'Home/detial?id=0', 'newwindow', 'height=800x, width=600px, scrollbarsno, resizable=no')
     });
 
     

@@ -30,12 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DogNet.Repositories">
-      <HintPath>..\REF\DogNet.Repositories.dll</HintPath>
+    <Reference Include="DogNet.Repositories, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\maipu_code\Code\Wangyj\NPI\NPI.Web\bin\DogNet.Repositories.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="PetaPoco">
-      <HintPath>..\REF\PetaPoco.dll</HintPath>
+    <Reference Include="PetaPoco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\REF\PetaPoco.dll</HintPath>
     </Reference>
     <Reference Include="Senparc.Weixin.MP.MvcExtension.4.0.1.32581.Fakes">
       <HintPath>FakesAssemblies\Senparc.Weixin.MP.MvcExtension.4.0.1.32581.Fakes.dll</HintPath>

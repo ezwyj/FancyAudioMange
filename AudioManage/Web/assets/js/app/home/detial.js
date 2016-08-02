@@ -35,6 +35,29 @@
         window.close();
     });
 
+    $('#deletAudio').on('click', function () {
+        //删除
+        $.confirm('是否删除本条记录？', function (result) {
+            if (result) {
+
+                $.post(rootUrl + 'Home/submitDelete', {
+                    audioId: $("#audioId").val()
+                }, function (res) {
+                    if (res.state) {
+                        $.tips('删除成功！', 0);
+                        window.location.reload();
+                        
+                        
+                    } else {
+                        $.tips(res.msg, 0);
+                    }
+                });
+                //删除附件
+
+            }
+        });
+    });
+
     $('#save').on('click', function () {
         var panel = $('.panel-body');
         var attachments = [];
@@ -45,6 +68,10 @@
                 attachments.push($(this).data('fileid'));
             }
         });
+        if (attachments.length == 0) {
+            $.tips("没有音乐文件上传", 3);
+            return false;
+        }
 
         var audioEntity = {
             Id: $("#audioId").val(),
@@ -63,6 +90,7 @@
             if (res.state) {
 
                 $.tips(res.msg, 3);
+                window.location.reload();
             } else {
                 $.tips(res.msg, 0);
             }
@@ -74,10 +102,10 @@
         uploader: rootUrl + 'Common/UploadAttachment',
         fileSizeLimit: '100 MB',
         onSelect: function (file) {
-            //if (file.type != '.mp3' ) {
-            //    $.tips('限制类文件，请重新上传！', 0);
-            //    return false;
-            //}
+            if (file.type != '.mp3' ) {
+                $.tips('限制类文件，请重新上传！', 0);
+                return false;
+            }
 
             var queue = $('#' + this.settings.queueID);
             var html = '<div id="#{fileId}" class="uploadify-queue-item">' +

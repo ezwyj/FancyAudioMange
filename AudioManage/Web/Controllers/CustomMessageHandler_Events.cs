@@ -70,18 +70,50 @@ namespace Web.Controllers
         public override IResponseMessageBase OnEvent_ScanRequest(RequestMessageEvent_Scan requestMessage)
         {
 
-            var responseMessage = CreateResponseMessage<ResponseMessageText>();
+            var responseMessage = CreateResponseMessage<ResponseMessageNews>();
             //通过扫描关注
             try
             {
-                    //扫描后发送语音文件+图文链接
+                string url = requestMessage.EventKey.Replace("qrscene_", "");
+                CreateResponseMessage<ResponseMessageNews>();
+
+                string id = url.Replace("http://pov.deviceiot.top/Mobile/index?id=", "");
+                var item = AudioCore.Entity.AudioEntity.GetSingle(id);
+                if (item != null)
+                {
+                    responseMessage.Articles.Add(new Article()
+                    {
+                        Title = item.Title,
+                        Description = item.ContentMini,
+                        Url = url
+                    });
+
+                }
+                else
+                {
+                    responseMessage.Articles.Add(new Article()
+                    {
+                        Title = "未找到文件",
+                        Description = url,
+                        Url = url
+                    });
+
+                }
+
+                return responseMessage;
                
 
 
             }
             catch (Exception e)
             {
-                responseMessage.Content = e.Message;
+                responseMessage.Articles.Add(new Article()
+                {
+                    Title = e.Message,
+                    Description = ""
+
+                }
+                );
             }
             return responseMessage;
         }
@@ -101,7 +133,6 @@ namespace Web.Controllers
             return responseMessage;
         }
 
-        private string Subscribe = "您好，感谢您关注汇通融合机构。邀请您参加目前火热开展的百万奖金等你拿活动。 \r\n \r\n回复数字“1” 了解 活动详情 \r\n回复数字“2” 进入 我要开户 \r\n回复数字“3”了解 上海文交所";
 
         /// <summary>
         /// 订阅（关注）事件

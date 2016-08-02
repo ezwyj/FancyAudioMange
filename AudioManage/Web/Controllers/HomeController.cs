@@ -93,7 +93,17 @@ namespace Web.Controllers
             string localUrl = GetPictureQrCode(QrCodeURL,savefile);
             return localUrl;
         }
-       
+        
+        [HttpPost]
+        public JsonResult submitDelete(int audioId)
+        {
+            bool state=false;
+            string msg = string.Empty;
+
+            state = AudioService.Delete(audioId,out msg);
+
+            return new JsonResult { Data = new { state = state, msg = msg} };
+        }
 
         [HttpPost]
         public JsonResult Detial(string valueSetJson)
@@ -122,6 +132,7 @@ namespace Web.Controllers
             {
                 var ret = new AudioEntity();
                 ret.CreateTime = DateTime.Now;
+                ret.orderNum = 100;
                 ret.Id = 0;
                 return View(ret);
             }
@@ -147,7 +158,7 @@ namespace Web.Controllers
                 Sql sql = new Sql();
                 sql.Append("select * from audio with(nolock) where 1=1 ");
                 if (!string.IsNullOrEmpty(title)) sql.Append(" and title=@0", title.Replace("'", ""));
-                sql.Append(" ORDER BY CreateTime DESC");
+                sql.Append(" ORDER BY orderNum ");
 
                 Page = AudioEntity.DefaultDB.Page<AudioEntity>(pageIndex, pageSize, sql);
 

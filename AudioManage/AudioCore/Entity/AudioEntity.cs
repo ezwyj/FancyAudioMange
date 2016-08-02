@@ -17,7 +17,7 @@ namespace AudioCore.Entity
         public string Title { get; set; }
         public string Location { get; set; }
 
-        public int Order { get; set; }
+        public int orderNum { get; set; }
 
 
         public string QrCodeFile { get; set; }
@@ -80,11 +80,11 @@ namespace AudioCore.Entity
             get
             {
                 List<AttachmentEntity> ret = new List<AttachmentEntity>();
-                if (AudioFileId != "")
+                if (AudioFileId!=null)
                 {
                     Sql sql = new Sql();
                     sql.Append("Select * from attachment where id in (");
-                    sql.Append(AudioFileId);
+                    sql.Append(AudioFileId==""?"0":AudioFileId);
                     sql.Append(")");
                     return AttachmentEntity.DefaultDB.Fetch<AttachmentEntity>(sql);
                    
