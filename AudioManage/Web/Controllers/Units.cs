@@ -15,7 +15,18 @@ namespace Web.Controllers
         private static string appSecret = ConfigurationManager.AppSettings["WeixinAppSecret"];
         //生成用户分享用二维码
 
-       
+        public static string UrlConvertToR(string imageurl1)
+        {
+
+            string tmpRootDir = HttpContext.Current.Server.MapPath(System.Web.HttpContext.Current.Request.ApplicationPath.ToString()); //获取程序根目录
+
+            string imageurl2 = imageurl1.Replace(tmpRootDir, "");  //转换成相对路径
+
+            imageurl2 = imageurl2.Replace(@"\", @"/");
+
+            return imageurl2;
+
+        }
 
         public static string GetPictureQrCode(string picUrl, string weixinId)
         {

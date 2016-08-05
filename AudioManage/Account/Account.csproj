@@ -30,8 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DogNet.Repositories">
-      <HintPath>..\Web\REF\DogNet.Repositories.dll</HintPath>
+    <Reference Include="DogNet.Repositories, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\REF\DogNet.Repositories.dll</HintPath>
     </Reference>
     <Reference Include="PetaPoco">
       <HintPath>..\Web\REF\PetaPoco.dll</HintPath>

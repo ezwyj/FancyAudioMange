@@ -278,6 +278,10 @@
     <Content Include="assets\js\lib\uploadify.swf" />
     <Content Include="assets\js\lib\util.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\mobile\css\style.css" />
+    <Content Include="assets\mobile\images\aa.jpg" />
+    <Content Include="assets\mobile\images\g1.jpg" />
+    <Content Include="assets\mobile\images\wuwangxinan.mp3" />
     <Content Include="assets\plugins\art-template.js" />
     <Content Include="assets\plugins\datepicker\bootstrap-datepicker.min.css" />
     <Content Include="assets\plugins\datepicker\bootstrap-datepicker.min.js" />
@@ -405,6 +409,7 @@
     <Content Include="Views\Mobile\Index.cshtml" />
     <Content Include="Views\Shared\_MobileLayout.cshtml" />
     <None Include="Properties\PublishProfiles\fancyAudioManage.pubxml" />
+    <None Include="Properties\PublishProfiles\homepublic.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
