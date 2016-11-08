@@ -1,6 +1,6 @@
 ﻿define(['common', 'bootstrap' ], function ($) {
 
-    playlist = [];
+   
     wx.config({
         // 配置信息, 即使不正确也能使用 wx.ready
         debug: false,

@@ -1,61 +1,44 @@
 ﻿@model AudioCore.Entity.AudioEntity
 @{
     ViewBag.Title = "手机播放";
-    Layout = "~/Views/Shared/_MobileLayout.cshtml";
+   
     
 }
 
-@section styles {
-    <link href="@Url.Content("~/assets/css/weui/weui.min.css")" rel="stylesheet" />
-<style>
-    html,body { height:100%;}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>语音</title>
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/mobilecss/css/eqShow-2.5.1.css")">
+    ><meta charset="utf-8">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="pragram" content="no-cache">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/mobilecss/css/main.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/mobilecss/css/endpic.css")">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/mobilecss/css/acss.css")">
+    <script type="text/javascript" src="js/offline.js"></script>
+    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+</head>
 
-    .container {
-        width: 100%;
-        height: 660px;
-        margin: 0 auto;
-        background: url(@Url.Content("~/assets/img/mobileImage/bg.png")) no-repeat;
-        position: relative;
-    }
+<body class="s-bg-ddd pc no-3d" style="-webkit-user-select: none; background-color:#1A0701;">
 
-    .container .whiteBg {
-        width: 100%;
+    <section class="p-ct transformNode-2d" style="height: 907px; background-color:#1A0701;">
+        <div class="translate-back" style="height: 1008px; background-color:#1A0701;">
+            <div class="m-page m-fengye" style="background-color:#1A0701;">
+                <div class="m_st_1">
+                    <div class="m_st_a1"><img src="@Url.Content("~/mobilecss/images/3.png")" /></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="@Url.Content("~/mobilecss/js/init.mix.js")" type="text/javascript" charset="utf-8"></script>
+    <script src="@Url.Content("~/mobilecss/js/coffee.js")" type="text/javascript" charset="utf-8"></script>
+    <script src="@Url.Content("~/mobilecss/js/99_main.js")" type="text/javascript" charset="utf-8"></script>
+</body>
 
-        height: 93px;
-        background: url(@Url.Content("~/assets/img/mobileImage/1.jpg")) no-repeat;
-        max-width: 100%;
-        position: absolute;
-        top: 72px;
-        left: 67px;
-    }
-    .container .video{ 
-	width:98%; 
-	height:363px; 
-	border-style:solid; border-width:3px; border-color:#000;
-	position:absolute;
-	top:306px;
-	left:5px;
-}
-    
-</style>
-}
-
-<div class="container" id="container">
-    <div class="whiteBg"></div>
-    <div class="video">
-        <audio width="100%" id="bgmusic" autoplay preload loop controls></audio>
-    </div>
-</div>
-
-
-@section scripts {
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-    <script>
-        OP_CONFIG.module = 'mobile';
-        OP_CONFIG.page = 'index';
-       
-       
-        
-    </script>
-}
-
+</html>
