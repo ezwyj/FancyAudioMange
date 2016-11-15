@@ -109,7 +109,7 @@ namespace ValueSet.Service
 
                 if (entity.SetId == 0)
                 {
-                    string sql = "delete npi_valueSet where SetId=" + entity.Id;
+                    string sql = "delete valueSet where SetId=" + entity.Id;
 
                     db.Execute(sql);
                 }

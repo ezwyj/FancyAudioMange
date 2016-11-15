@@ -22,7 +22,7 @@ namespace Web.Controllers
             }
 
             ViewBag.setList = ValueSet.Service.ValueSetService.GetSetList();
-            ViewBag.rightName = right.RightName;
+            ViewBag.rightName = "值集维护";
 
             return View();
         }

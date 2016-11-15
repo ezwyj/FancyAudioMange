@@ -12,6 +12,25 @@ namespace Web.Controllers
         //
         // GET: /Mobile/
 
+        public ActionResult List(string classOne)
+        {
+            var entity = AudioEntity.GetListByProperty(a => a.ClassONE, classOne);
+            return View(entity);
+        }
+
+        public ActionResult ListOne()
+        {
+            return List("01");
+        }
+        public ActionResult ListTwo()
+        {
+            return List("02");
+        }
+        public ActionResult ListThree()
+        {
+            return List("03");
+        }
+
         public ActionResult Index(int id)
         {
             if (id != null)

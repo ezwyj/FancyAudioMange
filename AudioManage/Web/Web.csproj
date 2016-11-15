@@ -278,6 +278,10 @@
     <Content Include="assets\js\lib\uploadify.swf" />
     <Content Include="assets\js\lib\util.js" />
     <Content Include="assets\js\main.js" />
+    <Content Include="assets\mobile\css\style.css" />
+    <Content Include="assets\mobile\images\aa.jpg" />
+    <Content Include="assets\mobile\images\g1.jpg" />
+    <Content Include="assets\mobile\images\wuwangxinan.mp3" />
     <Content Include="assets\plugins\art-template.js" />
     <Content Include="assets\plugins\datepicker\bootstrap-datepicker.min.css" />
     <Content Include="assets\plugins\datepicker\bootstrap-datepicker.min.js" />
@@ -356,6 +360,10 @@
     <Content Include="REF\OThinker.H3.WorkSheet.dll" />
     <Content Include="REF\PetaPoco.dll" />
     <Content Include="REF\PetaPoco.pdb" />
+    <Content Include="Views\Mobile\index.html" />
+    <None Include="Views\Mobile\list1.cshtml" />
+    <Content Include="Views\Mobile\list2.html" />
+    <Content Include="Views\Mobile\list3.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -373,6 +381,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\System\Logs.cshtml" />
     <Content Include="Views\System\Setting.cshtml" />
+    <Content Include="Views\Mobile\ListOne.cshtml" />
+    <Content Include="Views\Mobile\ListTwo.cshtml" />
+    <Content Include="Views\Mobile\ListThree.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -418,6 +429,7 @@
     <Content Include="Views\Mobile\Index.cshtml" />
     <Content Include="Views\Shared\_MobileLayout.cshtml" />
     <None Include="Properties\PublishProfiles\fancyAudioManage.pubxml" />
+    <None Include="Properties\PublishProfiles\homepublic.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

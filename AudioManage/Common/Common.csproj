@@ -36,12 +36,6 @@
     <Reference Include="DogNet.Repositories">
       <HintPath>..\Web\REF\DogNet.Repositories.dll</HintPath>
     </Reference>
-    <Reference Include="MPService.Common.Operation">
-      <HintPath>..\Web\REF\MPService.Common.Operation.dll</HintPath>
-    </Reference>
-    <Reference Include="MPService.Contract.Mail">
-      <HintPath>..\Web\REF\MPService.Contract.Mail.dll</HintPath>
-    </Reference>
     <Reference Include="PetaPoco, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6235298024de30d5, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Web\REF\PetaPoco.dll</HintPath>

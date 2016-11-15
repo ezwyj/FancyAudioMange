@@ -33,15 +33,40 @@
                     </div>
 
                 </div>
+                
+            </div>
+            <div class="row item-row">
+                <div class="col-md-4">
+                    <div class="item-name">一级：</div>
+                    <div class="item-static">
+                        <select class="form-control" id="ClassOne">
+                            
+                            @foreach (var classItem in ViewBag.ClassOneList as List<ValueSet.Entity.ValueSetEntity>)
+                            {
+                                <option value="@classItem.Value" @Html.Raw(classItem.Value == @Model.ClassONE ? "selected" : "")>@classItem.Text</option>
+                            }
+                        </select>
+
+                    </div>
+                </div>
                 <div class="row item-row">
                     <div class="col-md-4">
-                        <div class="item-name">排序：</div>
-                        <div class="item-static"><input type="text" value="@Model.orderNum" id="order" /></div>
+                        <div class="item-name">二级：</div>
+                        <div class="item-static">
+                            <select class="form-control" id="ClassTwo">
+
+                                @foreach (var classItemTwo in ViewBag.ClassTwoList as List<ValueSet.Entity.ValueSetEntity>)
+                                {
+                                    <option value="@classItemTwo.Value" @Html.Raw(classItemTwo.Value == @Model.ClassTWO
+ ? "selected" : "")>@classItemTwo.Text</option>
+                                }
+                            </select>
+                        </div>
                     </div>
 
                 </div>
+                
             </div>
-            
             <div class="row item-row">
                 <div class="col-md-12" >
                     <div class="item-name">简介内容：</div>
@@ -67,6 +92,15 @@
                 </div>
 
 
+            </div>
+            <div class="row item-row">
+                
+                    <div class="col-md-4">
+                        <div class="item-name">排序：</div>
+                        <div class="item-static"><input type="text" value="@Model.orderNum" id="order" /></div>
+                    </div>
+
+               
             </div>
             <div class="row item-row">
                 <div class="col-md-4">
@@ -98,6 +132,30 @@
                                     
                                 </div>
                             }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row item-row">
+                <div class="col-md-12">
+                    <div class="item-name">图片</div>
+                    <div class="item-static">
+                        <div class="item-control">
+                            <button class="btn btn-sm btn-primary" id="select-attachmentPic">　图片　</button>
+                        </div>
+                        <div class="item-control uploadify-queueImg">
+                            @if (Model.img != null)
+{
+    <div id="" class="finish-queue-itemImg">
+        @foreach (var itemImg in Model.ImgFile)
+        {
+            <span class="file-name" title="@itemImg.FileName">@itemImg.FileName</span>
+            <a class="file-operate" href="@Url.Content("~/Common/DownloadAttachment?id=" + @itemImg.Id)">预览</a><br>
+        }
+
+
+    </div>
+}
                         </div>
                     </div>
                 </div>

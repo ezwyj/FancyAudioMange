@@ -1,27 +1,31 @@
 ﻿@{
 
 }
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN"
+          "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>@ViewBag.Title</title>
-        @RenderSection("styles", false)
+<head>
+    <!--Custom Theme files-->
+    <link href="@Url.Content("~/assets/mobile/css/style.css")" rel="stylesheet" type="text/css" media="all" />
+    <!--Custom Theme files-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title</title>
+    @RenderSection("styles", false)
 
-        <script>
+    <script>
             var OP_CONFIG = {
                 rootUrl: '@Url.Content("~")'
             };
-        </script>
-        @RenderSection("scripts", false)
-    </head>
+    </script>
+    @RenderSection("scripts", false)
+</head>
 <body>
-
-    <div class="navbar-padding-top" id="main">
+    <!--- header-top ---->
+    <div id="home" class="header-top">
+        <!--- container ---->
         @RenderBody()
     </div>
-    
     <script type="text/javascript" src="@Url.Content("~/assets/js/lib/require.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/assets/js/main.js")"></script>
 </body>

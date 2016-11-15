@@ -1,44 +1,43 @@
 ﻿@model AudioCore.Entity.AudioEntity
 @{
     ViewBag.Title = "手机播放";
-   
+    Layout = "~/Views/Shared/_MobileLayout.cshtml";
     
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>语音</title>
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/mobilecss/css/eqShow-2.5.1.css")">
-    ><meta charset="utf-8">
-    <meta name="apple-touch-fullscreen" content="YES">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="pragram" content="no-cache">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/mobilecss/css/main.css")">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/mobilecss/css/endpic.css")">
-    <link rel="stylesheet" type="text/css" href="@Url.Content("~/mobilecss/css/acss.css")">
-    <script type="text/javascript" src="js/offline.js"></script>
-    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
-</head>
+@section styles {
 
-<body class="s-bg-ddd pc no-3d" style="-webkit-user-select: none; background-color:#1A0701;">
+}
 
-    <section class="p-ct transformNode-2d" style="height: 907px; background-color:#1A0701;">
-        <div class="translate-back" style="height: 1008px; background-color:#1A0701;">
-            <div class="m-page m-fengye" style="background-color:#1A0701;">
-                <div class="m_st_1">
-                    <div class="m_st_a1"><img src="@Url.Content("~/mobilecss/images/3.png")" /></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script src="@Url.Content("~/mobilecss/js/init.mix.js")" type="text/javascript" charset="utf-8"></script>
-    <script src="@Url.Content("~/mobilecss/js/coffee.js")" type="text/javascript" charset="utf-8"></script>
-    <script src="@Url.Content("~/mobilecss/js/99_main.js")" type="text/javascript" charset="utf-8"></script>
-</body>
+<div class="header-logo" style="position:absolute;">
+    <img src="@Url.Content("~/assets/mobile/images/aa.jpg")" />
+</div>
+<div class="header-logo1" style="position:absolute; padding-top:51%; padding-left:1%;">
+    <div style="padding-left:1%; padding-right:1%">
+        <img src="@Url.Content("~/assets/mobile/images/g1.jpg")" />
+    </div>
+</div>
 
-</html>
+<audio controls="controls" autoplay="autoplay" style="position:relative; padding-top:55%; padding-left:1%;">
+    @foreach (var item in Model.AudioFile)
+    {
+        string mp3Url =Web.Controllers.Units.UrlConvertToR(item.FileAddress);
+        
+        <source src="@Url.Content("~/"+mp3Url)" type="audio/mpeg" />
+    }
+    
+    Your browser does not support the audio element.
+</audio>
+
+
+@section scripts {
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        OP_CONFIG.module = 'mobile';
+        OP_CONFIG.page = 'index';
+       
+       
+        
+    </script>
+}
+

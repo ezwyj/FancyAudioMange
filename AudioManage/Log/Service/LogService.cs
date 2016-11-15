@@ -29,7 +29,7 @@ namespace Log.Service
 
         public static List<LogEntity> SearchList(int pageIndex, int pageSize, int? type, string logOperator, string startTime, string endTime, out long total)
         {
-            string sql = "select * from npi_log where 1=1";
+            string sql = "select * from log where 1=1";
 
             if (type != null && type != 0)
             {
@@ -58,7 +58,7 @@ namespace Log.Service
 
         public static List<LogEntity> SearchList(int? type, string logOperator, string startTime, string endTime)
         {
-            string sql = "select * from npi_log where 1=1";
+            string sql = "select * from log where 1=1";
 
             if (type != null && type != 0)
             {

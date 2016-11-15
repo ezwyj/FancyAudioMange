@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DogNet.Repositories">
-      <HintPath>..\Web\REF\DogNet.Repositories.dll</HintPath>
+      <HintPath>..\DogNet.Repositories.dll</HintPath>
     </Reference>
     <Reference Include="PetaPoco">
       <HintPath>..\Web\REF\PetaPoco.dll</HintPath>

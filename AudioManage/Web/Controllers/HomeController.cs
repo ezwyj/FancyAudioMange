@@ -12,6 +12,7 @@ using System.Web.Configuration;
 using System.Web.Mvc;
 using Senparc.Weixin.MP.AdvancedAPIs.QrCode;
 using Senparc.Weixin.MP.AdvancedAPIs;
+using ValueSet.Service;
 
 
 namespace Web.Controllers
@@ -128,6 +129,10 @@ namespace Web.Controllers
 
         public ActionResult Detial(int id)
         {
+
+            ViewBag.ClassOneList = ValueSetService.GetValueList(1, true);
+            ViewBag.ClassTwoList = ValueSetService.GetValueList(2, true);
+            ViewBag.ClassThreeList = ValueSetService.GetValueList(3, true);
             if (id == 0)
             {
                 var ret = new AudioEntity();

@@ -5,6 +5,7 @@ using System.Text;
 using PetaPoco;
 using DogNet.Repositories;
 using Common.Entity;
+using ValueSet.Entity;
 
 namespace AudioCore.Entity
 {
@@ -19,7 +20,23 @@ namespace AudioCore.Entity
 
         public int orderNum { get; set; }
 
+        public string ClassONE { get; set; }
+        public string ClassTWO { get; set; }
 
+        [Ignore]
+        public string ClassTWOExp
+        {
+            get
+            {
+                List<ValueSetEntity> list = ValueSetEntity.GetListByProperty(a => a.SetId, 2);
+
+                ValueSetEntity valueEntity = list.Find(a => a.Value == ClassTWO);
+
+                return valueEntity == null ? "" : valueEntity.Text; 
+            }
+        }
+        
+        public string ClassThire { get; set; }
         public string QrCodeFile { get; set; }
 
         public string Remark { get; set; }
@@ -71,8 +88,41 @@ namespace AudioCore.Entity
                 return ret;
             }
         }
+        public string img { get; set; }
+        [PetaPoco.Ignore]
+        public List<AttachmentEntity> ImgFile
+        {
+            get
+            {
+                List<AttachmentEntity> ret = new List<AttachmentEntity>();
+                if (AudioFileId != null)
+                {
+                    Sql sql = new Sql();
+                    sql.Append("Select * from attachment where id in (");
+                    sql.Append(string.IsNullOrEmpty(img)  ? "0" : img);
+                    sql.Append(")");
+                    return AttachmentEntity.DefaultDB.Fetch<AttachmentEntity>(sql);
 
+                }
+
+                return null;
+            }
+        }
         public string AudioFileId { get; set; }
+         [Ignore]
+        public string TopImageUrl
+        {
+            get
+            {
+                string url = "";
+                if (ImgFile != null && ImgFile.Count > 0)
+                {
+                    int uploadIndex = ImgFile[0].FileAddress.IndexOf("Upload");
+                    url = ImgFile[0].FileAddress.Substring(uploadIndex);
+                }
+                return url;
+            }
+        }
 
         [PetaPoco.Ignore]
         public List<AttachmentEntity> AudioFile

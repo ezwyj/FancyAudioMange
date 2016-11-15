@@ -66,6 +66,10 @@
       <Project>{02e6b284-eb4e-4815-8069-ec37e65938a3}</Project>
       <Name>Log</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ValueSet\ValueSet.csproj">
+      <Project>{5fc2e226-6222-4704-b1cc-a3735e605125}</Project>
+      <Name>ValueSet</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Fakes Include="Fakes\Senparc.Weixin.MP.MvcExtension.fakes" />
