@@ -88,6 +88,9 @@ namespace AudioCore.Entity
                 return ret;
             }
         }
+
+        public int zan { get; set; }
+        public int listen { get; set; }
         public string img { get; set; }
         [PetaPoco.Ignore]
         public List<AttachmentEntity> ImgFile
