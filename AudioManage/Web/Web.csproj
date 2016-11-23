@@ -60,9 +60,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Ref\DogNet.Flow.dll</HintPath>
     </Reference>
-    <Reference Include="DogNet.Repositories">
-      <HintPath>Ref\DogNet.Repositories.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PetaPoco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -395,6 +392,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\maipu_code\Code\Zhuhh\DogNet\DogNet.Repositories\DogNet.Repositories.csproj">
+      <Project>{e8442d24-f34b-4d26-881a-e3a8a56a304c}</Project>
+      <Name>DogNet.Repositories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AudioCore\AudioCore.csproj">
       <Project>{bbcc01e9-af0e-4cfb-8b30-a9a22842fa04}</Project>
       <Name>AudioCore</Name>

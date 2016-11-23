@@ -24,6 +24,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F5502D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioCore", "AudioManage\AudioCore\AudioCore.csproj", "{BBCC01E9-AF0E-4CFB-8B30-A9A22842FA04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DogNet.Repositories", "..\..\maipu_code\Code\Zhuhh\DogNet\DogNet.Repositories\DogNet.Repositories.csproj", "{E8442D24-F34B-4D26-881A-E3A8A56A304C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{BBCC01E9-AF0E-4CFB-8B30-A9A22842FA04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBCC01E9-AF0E-4CFB-8B30-A9A22842FA04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBCC01E9-AF0E-4CFB-8B30-A9A22842FA04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8442D24-F34B-4D26-881A-E3A8A56A304C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8442D24-F34B-4D26-881A-E3A8A56A304C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8442D24-F34B-4D26-881A-E3A8A56A304C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8442D24-F34B-4D26-881A-E3A8A56A304C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

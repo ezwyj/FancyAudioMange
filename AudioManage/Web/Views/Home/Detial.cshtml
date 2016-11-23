@@ -122,15 +122,13 @@
                         <div class="item-control uploadify-queue">
                             @if(Model.AudioFile!=null)
                             {
-                                <div id="" class="finish-queue-item">
-                                    @foreach (var item in Model.AudioFile)
-                                    {
+                                foreach (var item in Model.AudioFile)
+                                {
+                                    <div id="" class="finish-queue-item" data-fileid="@item.Id">
                                         <span class="file-name" title="@item.FileName">@item.FileName</span>
                                         <a class="file-operate" href="@Url.Content("~/Common/DownloadAttachment?id=" + @item.Id)">下载</a><br>
-                                    }
-
-                                    
-                                </div>
+                                    </div>
+                                }
                             }
                         </div>
                     </div>
@@ -146,15 +144,17 @@
                         <div class="item-control uploadify-queueImg">
                             @if (Model.img != null)
 {
-    <div id="" class="finish-queue-itemImg">
-        @foreach (var itemImg in Model.ImgFile)
+    
+        foreach (var itemImg in Model.ImgFile)
         {
-            <span class="file-name" title="@itemImg.FileName">@itemImg.FileName</span>
-            <a class="file-operate" href="@Url.Content("~/Common/DownloadAttachment?id=" + @itemImg.Id)">预览</a><br>
+            <div id="" class="finish-queue-itemImg" data-fileid="@itemImg.Id">
+                <span class="file-name" title="@itemImg.FileName">@itemImg.FileName</span>
+                <a class="file-operate" href="@Url.Content("~/Common/DownloadAttachment?id=" + @itemImg.Id)">预览</a><br>
+            </div>
         }
 
 
-    </div>
+
 }
                         </div>
                     </div>

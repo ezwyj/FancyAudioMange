@@ -10,7 +10,7 @@ using Account.Service;
 namespace Log.Entity
 {
     [RepositoryEntity(DefaultConnName = "Log")]
-    [PetaPoco.TableName("Log_log")]
+    [PetaPoco.TableName("Log")]
     [PetaPoco.PrimaryKey("Id")]
     public class LogEntity : Repository<LogEntity>
     {

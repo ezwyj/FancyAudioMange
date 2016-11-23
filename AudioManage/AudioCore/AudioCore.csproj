@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DogNet.Repositories, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\maipu_code\Code\Wangyj\NPI\NPI.Web\bin\DogNet.Repositories.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="PetaPoco, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -58,6 +54,10 @@
     <Compile Include="Service\AudioService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\maipu_code\Code\Zhuhh\DogNet\DogNet.Repositories\DogNet.Repositories.csproj">
+      <Project>{e8442d24-f34b-4d26-881a-e3a8a56a304c}</Project>
+      <Name>DogNet.Repositories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{cd688199-38c6-41b3-a3f3-a84f952bb6a2}</Project>
       <Name>Common</Name>

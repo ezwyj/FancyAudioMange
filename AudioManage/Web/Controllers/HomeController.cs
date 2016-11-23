@@ -59,8 +59,9 @@ namespace Web.Controllers
                 response.Close();
                 return savePath;
             }
-            catch
+            catch(Exception e)
             {
+                string msg = e.Message;
                 return "error";
             }
         }

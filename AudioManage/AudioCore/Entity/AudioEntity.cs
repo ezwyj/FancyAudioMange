@@ -11,7 +11,7 @@ namespace AudioCore.Entity
 {
      [RepositoryEntity(DefaultConnName = "POV")]
     [PetaPoco.TableName("audio")]
-    [PetaPoco.PrimaryKey("Id")]
+    
     public class AudioEntity: Repository<AudioEntity>
     {
         public int Id { get; set; }
@@ -36,7 +36,7 @@ namespace AudioCore.Entity
             }
         }
         
-        public string ClassThire { get; set; }
+
         public string QrCodeFile { get; set; }
 
         public string Remark { get; set; }

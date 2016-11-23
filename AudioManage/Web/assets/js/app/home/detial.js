@@ -83,7 +83,7 @@
         var audioEntity = {
             Id: $("#audioId").val(),
             Title: $("#title").val(),
-            Content: $("#editor").val(),
+            Content: $("#content").val(),
             Location: $("#location").val(),
             Remark: $("#Remark").val(),
             AudioFile: $("#AudioFile").val(),
@@ -93,6 +93,7 @@
             ClassONE: $("#ClassOne").val(),
             ClassTWO: $("#ClassTwo").val(),
             orderNum: $("#order").val(),
+            QrCodeFile: $('#QrcodeFile').val(),
             State:$("#State").val()
         }
 
