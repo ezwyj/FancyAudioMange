@@ -45,7 +45,7 @@
                 }, function (res) {
                     if (res.state) {
                         $.tips('删除成功！', 0);
-                        window.location.reload();
+                        window.location = 'Index';
                         
                         
                     } else {
