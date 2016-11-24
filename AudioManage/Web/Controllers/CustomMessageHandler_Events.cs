@@ -76,8 +76,9 @@ namespace Web.Controllers
             {
                 string url = requestMessage.EventKey.Replace("qrscene_", "");
                 CreateResponseMessage<ResponseMessageNews>();
+                string mobileUrl = System.Configuration.ConfigurationManager.AppSettings["mobileUrl"];
 
-                string id = url.Replace("http://pov.deviceiot.top/Mobile/index?id=", "");
+                string id = url.Replace(mobileUrl, "");
                 var item = AudioCore.Entity.AudioEntity.GetSingle(id);
                 if (item != null)
                 {
@@ -152,8 +153,8 @@ namespace Web.Controllers
                 {
                     string url = requestMessage.EventKey.Replace("qrscene_", "");
                     CreateResponseMessage<ResponseMessageNews>();
-
-                    string id = url.Replace("http://pov.deviceiot.top/Mobile/index?id=", "");
+                    string mobileUrl = System.Configuration.ConfigurationManager.AppSettings["mobileUrl"];
+                    string id = url.Replace(mobileUrl, "");
                     var item = AudioCore.Entity.AudioEntity.GetSingle(id);
                     if (item != null)
                     {

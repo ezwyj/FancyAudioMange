@@ -90,7 +90,9 @@ namespace Web.Controllers
         }
         public static string BuildQrCode(int audioId, string savefile)
         {
-             CreateQrCodeResult qrResult = Senparc.Weixin.MP.AdvancedAPIs.QrCodeApi.CreateByStr(appId, "http://pov.deviceiot.top/Mobile/index?id="+audioId.ToString());
+            string mobileUrl = System.Configuration.ConfigurationManager.AppSettings["mobileUrl"];
+        
+             CreateQrCodeResult qrResult = Senparc.Weixin.MP.AdvancedAPIs.QrCodeApi.CreateByStr(appId, mobileUrl+audioId.ToString());
             string QrCodeURL = QrCodeApi.GetShowQrCodeUrl(qrResult.ticket);
             string localUrl = GetPictureQrCode(QrCodeURL,savefile);
             return localUrl;
