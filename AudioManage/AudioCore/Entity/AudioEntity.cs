@@ -50,7 +50,7 @@ namespace AudioCore.Entity
             { 
                 if (Content!=null)
                 {
-                    return Content.Length > 40 ? Content.Substring(0, 40) + "..." : Content; 
+                    return Content.Length > 18 ? Content.Substring(0, 18) + "..." : Content; 
                 }
                 else
                 {
