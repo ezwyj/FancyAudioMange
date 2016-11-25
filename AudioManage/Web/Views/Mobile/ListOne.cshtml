@@ -6,7 +6,9 @@
 }
 
 <div class="header-logo" style="position:absolute;">
-    <div style="width:100%; height:70px; margin-top:10px;">
+    <div style="width:100%; height:165px;">
+        <img src="@Url.Content("~/assets/mobile/images/手机界面_02.png")" /> </div>
+    <div style="width:100%; height:70px; margin-top:5px;">
         <div style="width:30%; height:100%; float:left; padding-left:10px;"> <a href=""><img src="@Url.Content("~/assets/mobile/images/g1.png")" /></a></div>
         <div style="width:30%; height:100%; float:left; padding-left:10px;"> <a href="@Url.Action("ListTwo","Mobile")"><img src="@Url.Content("~/assets/mobile/images/s2.png")" /></a></div>
         <div style="width:30%; height:100%; float:left; padding-left:10px;"> <a href="@Url.Action("ListThree", "Mobile")"><img src="@Url.Content("~/assets/mobile/images/s3.png")" /></a></div>
@@ -18,6 +20,7 @@
         }
         <div style="width:100%; height:70px; margin-top:10px">
             <a href="@Url.Action("Index", "Mobile", new { id= item.Id })">
+
                 @if (!string.IsNullOrEmpty(item.TopImageUrl))
                 {
                     <div style="width:15%; height:100%; float:left; margin-left:10px">
